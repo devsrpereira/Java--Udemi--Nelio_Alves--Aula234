@@ -35,5 +35,37 @@ public class Program {
             e.printStackTrace();
         }
 
+//PARTE 2 DO EXERCICIO COMPARABLE
+
+        String path2 = "..\\input2.csv";
+
+        List<Line> list2 = new ArrayList<>();
+        System.out.println();
+        System.out.println("Ordenação de lista composta");
+        try (BufferedReader br2 = new BufferedReader(new FileReader(path2))){
+            String compostLine = br2.readLine();
+
+            while (compostLine != null){
+                String[] fields = compostLine.split(",");
+                String name = fields[0];
+                double num = Double.parseDouble(fields[1]);
+                list2.add(new Line(name,num));
+                compostLine = br2.readLine();
+            }
+
+            Collections.sort(list2);
+
+            for (Line line : list2) {
+                System.out.println(line.getName() + "," +line.getNum());
+            }
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+
+
     }
 }
